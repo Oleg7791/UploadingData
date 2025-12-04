@@ -1,6 +1,7 @@
 import json
 from plotly.graph_objs import Scattergeo, Layout
 from plotly import  offline
+from lear import data_earthquake
 
 filename = 'data/eq_data_30_day_m1.json'
 with open(filename) as f:
@@ -9,10 +10,7 @@ with open(filename) as f:
 all_eq_dicts = all_eq_data['features']
 mags, lons, lats, hover_texts = [], [], [], []
 for eq_dict in all_eq_dicts:
-    mag = eq_dict['properties']['mag']
-    lon = eq_dict['geometry']['coordinates'][0]
-    lat = eq_dict['geometry']['coordinates'][1]
-    title = eq_dict['properties']['title']
+    mag, lon, lat, title = data_earthquake(eq_dict)
     lons.append(lon)
     lats.append(lat)
     mags.append(mag)
