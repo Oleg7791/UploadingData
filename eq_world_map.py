@@ -1,6 +1,7 @@
 import json
 from plotly.graph_objs import Scattergeo, Layout
 from plotly import  offline
+
 from lear import data_earthquake
 
 filename = 'data/eq_data_30_day_m1.json'

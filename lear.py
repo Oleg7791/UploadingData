@@ -1,9 +1,9 @@
-def data_earthquake(d):
-    """функция создает списки с данными о землетрясении"""
-    mags, lons, lats, hover_texts = [], [], [], []
-    mag = d['properties']['mag']
-    lon = d['geometry']['coordinates'][0]
-    lat = d['geometry']['coordinates'][1]
-    title = d['properties']['title']
+import requests
 
-    return mag, lon, lat, title
+#Make an API call and store the response.
+url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
+headers = {'Accept': 'application/vnd.github.v3+json'}
+r = requests.get(url, headers=headers)
+response_dict = r.json()
+print(f"Status code: {r.status_code}")
+print(response_dict.keys())
